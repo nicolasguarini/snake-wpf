@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29503.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "snake-wpf", "snake-wpf.csproj", "{579B6929-9C51-46C6-9BFE-57D4BD33D0E7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{579B6929-9C51-46C6-9BFE-57D4BD33D0E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{579B6929-9C51-46C6-9BFE-57D4BD33D0E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{579B6929-9C51-46C6-9BFE-57D4BD33D0E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{579B6929-9C51-46C6-9BFE-57D4BD33D0E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7330635B-E814-48D1-941E-0CD2E416B961}
+	EndGlobalSection
+EndGlobal
