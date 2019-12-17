@@ -8,8 +8,6 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SnakeGame">
 
-    <Canvas Background="DarkGreen">
-        <Rectangle Width="40" Height="10" Canvas.Top="150" Canvas.Left="50" Fill="Black"></Rectangle>
-        <Rectangle Width="10" Height="10" Canvas.Left="700" Canvas.Top="250" Fill="White"></Rectangle>
+    <Canvas Name="canvas" Background="DarkGreen">
     </Canvas>
 </Page>
