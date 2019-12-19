@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:snake_wpf"
         mc:Ignorable="d"
-        Title="Snake by Nicolas Guarini" Height="564.579" Width="857.29" ResizeMode="NoResize">
+        Title="Snake by Nicolas Guarini"  Height="550" Width="860" ResizeMode="NoResize" KeyDown="mw_KeyDown" Name="mw">
 
 
 

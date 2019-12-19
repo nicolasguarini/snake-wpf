@@ -20,6 +20,7 @@ namespace snake_wpf
     /// </summary>
     public partial class MainWindow : Window
     {
+        public string dir = "right";
         public MainWindow()
         {
             InitializeComponent();
@@ -34,6 +35,11 @@ namespace snake_wpf
         private void MenuItem_Click_RestartGame(object sender, RoutedEventArgs e)
         {
             Main.Content = new SnakeGame();
+        }
+
+        private void mw_KeyDown(object sender, KeyEventArgs e)
+        {
+   //         MessageBox.Show("MW WORKING");
         }
     }
 }

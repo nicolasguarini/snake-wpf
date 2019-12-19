@@ -6,8 +6,9 @@
       xmlns:local="clr-namespace:snake_wpf"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="SnakeGame">
+      Title="SnakeGame" Loaded="Page_Loaded" ClipToBounds="true">
 
-    <Canvas Name="canvas" Background="DarkGreen">
+    <Canvas Name="canvas" Background="White" >
+        
     </Canvas>
 </Page>
