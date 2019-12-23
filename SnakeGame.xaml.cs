@@ -34,6 +34,8 @@ namespace snake_wpf
         int score = 0;
         Label scoreLabel = new Label();
 
+        bool flagEatBonus = false; //true when the snake eats a bonus. if true the program will increase the snake length
+
         public SnakeGame()
         {
             timer.Tick += timer_Tick;
@@ -50,7 +52,7 @@ namespace snake_wpf
             
            
 
-            for (int i = 0; i < 20; i++) 
+            for (int i = 0; i < 5; i++) 
             {
                 AddBodyPart(currentPosition);
 
@@ -86,6 +88,7 @@ namespace snake_wpf
 
         public void AddBodyPart(Point coordinates)
         {
+            
             Rectangle r = new Rectangle();
             r.Height = 10;
             r.Width = 10;
@@ -93,6 +96,7 @@ namespace snake_wpf
 
             bodyPartsCoordinates.Add(coordinates);
             bodyParts.Add(r);
+
         }
 
         public void RestrictTail()
@@ -105,10 +109,18 @@ namespace snake_wpf
         void timer_Tick(object sender, EventArgs e) //Main Loop
         {
             AddBodyPart(currentPosition); 
-            RestrictTail(); 
-            PrintSnake(); 
-
+             
             UpdateCurrentPosition();
+
+            if(flagEatBonus)
+            {
+                AddBodyPart(currentPosition);
+                UpdateCurrentPosition();
+                flagEatBonus = false;
+            }
+
+            RestrictTail();
+            PrintSnake();
 
             PrintBonus();
 
@@ -122,7 +134,7 @@ namespace snake_wpf
                 MessageBox.Show("YOU LOSE");
                 NavigationService.Navigate(new StartMenu());
             }
-                
+            Trace.WriteLine(bodyPartsCoordinates.Count.ToString());
         }
 
         bool CheckSnakeEatBonus()
@@ -131,6 +143,7 @@ namespace snake_wpf
             if (currentPosition.Equals(bonusCoordinates))
             {
                 score++;
+                flagEatBonus = true;
                 return true;
             }
             else
@@ -149,13 +162,25 @@ namespace snake_wpf
         {
             //Updating current position based on current direction
             if (currentDirection == "right")
+            {
                 currentPosition.X += 10;
+            }
+                
             if (currentDirection == "down")
+            {
                 currentPosition.Y += 10;
+            }
+                
             if (currentDirection == "left")
+            {
                 currentPosition.X -= 10;
+            }
+                
             if (currentDirection == "up")
+            {
                 currentPosition.Y -= 10;
+            }
+                
             
             //If the snake reaches the edge of the window it will come back from the other side
             if (currentPosition.X >= canvas.ActualWidth)
