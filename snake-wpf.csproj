@@ -55,6 +55,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="FileManagement.cs" />
+    <Compile Include="GameData.cs" />
     <Compile Include="SnakeGame.xaml.cs">
       <DependentUpon>SnakeGame.xaml</DependentUpon>
     </Compile>

@@ -21,6 +21,9 @@ namespace snake_wpf
     {
         
         DispatcherTimer timer = new DispatcherTimer();
+        DispatcherTimer secondsTimer = new DispatcherTimer();
+        int seconds = 0;
+
         Point currentPosition = new Point(100, 50);
         string currentDirection = "right";
 
@@ -42,9 +45,13 @@ namespace snake_wpf
             timer.Tick += timer_Tick;
             timer.Interval = TimeSpan.FromMilliseconds(50);
 
+            secondsTimer.Tick += SecondsCounter;
+            timer.Interval = TimeSpan.FromMilliseconds(1000);
+
             InitializeComponent();
 
             timer.Start();
+            secondsTimer.Start();
 
             scoreLabel.Content = score;
             scoreLabel.FontSize = 250;
@@ -65,6 +72,11 @@ namespace snake_wpf
             }
 
             
+        }
+
+        void SecondsCounter(object sender, EventArgs e)
+        {
+            seconds++;
         }
 
         void PrintSnake()
@@ -131,6 +143,8 @@ namespace snake_wpf
             if (CheckSnakeTouchingHimself())
             {
                 timer.Stop();
+                secondsTimer.Stop();
+                //scrivo su file il punteggio
                 MessageBox.Show("YOU LOSE");
                 NavigationService.Navigate(new StartMenu());
             }
@@ -265,9 +279,5 @@ namespace snake_wpf
             Application.Current.MainWindow.KeyDown += new KeyEventHandler(Window_KeyDown);
         }
 
-        private void PrintScoreToFile()
-        {
-
-        }
     }
 }
