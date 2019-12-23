@@ -46,7 +46,7 @@ namespace snake_wpf
             timer.Interval = TimeSpan.FromMilliseconds(50);
 
             secondsTimer.Tick += SecondsCounter;
-            timer.Interval = TimeSpan.FromMilliseconds(1000);
+            secondsTimer.Interval = TimeSpan.FromMilliseconds(1000);
 
             InitializeComponent();
 
@@ -145,12 +145,11 @@ namespace snake_wpf
                 timer.Stop();
                 secondsTimer.Stop();
                 //scrivo su file il punteggio
-               // TimeSpan time = TimeSpan.FromSeconds(seconds);
-               // FileManagement.SaveGameData(new GameData(score, DateTime.Now.ToString(), time.ToString(@"hh\:mm\:ss")));
+               TimeSpan time = TimeSpan.FromSeconds(seconds);
+               FileManagement.SaveGameData(new GameData(score, DateTime.Now.ToString(), time.ToString(@"hh\:mm\:ss")));
                 MessageBox.Show("YOU LOSE");
                 NavigationService.Navigate(new StartMenu());
             }
-            Trace.WriteLine(bodyPartsCoordinates.Count.ToString());
         }
 
         bool CheckSnakeEatBonus()
@@ -232,14 +231,14 @@ namespace snake_wpf
             if (!reloadBonus) //se è la prima volta genero la posizione del bonus
             {
                 bonusCoordinates.X = new Random().Next(0, Convert.ToInt16(canvas.ActualWidth));
-              
-                while (bonusCoordinates.X % 10 != 0)
+                while (bonusCoordinates.X % 10 != 0 || bonusCoordinates.Y % 10 != 0 || bonusCoordinates.X < 10|| bonusCoordinates.X > canvas.ActualWidth-10)
                     bonusCoordinates.X = new Random().Next(0, Convert.ToInt16(canvas.ActualWidth));
 
-                bonusCoordinates.Y = new Random().Next(0, Convert.ToInt16(canvas.ActualHeight));
-                while (bonusCoordinates.Y % 10 != 0)
+                
+                while (bonusCoordinates.Y % 10 != 0 || bonusCoordinates.Y < 10 || bonusCoordinates.Y > canvas.ActualHeight - 10)
                     bonusCoordinates.Y = new Random().Next(0, Convert.ToInt16(canvas.ActualHeight));
 
+                Trace.WriteLine(bonusCoordinates.X.ToString() + "    " + bonusCoordinates.Y.ToString() + "           " + bodyPartsCoordinates[bodyPartsCoordinates.Count-1].X.ToString() + "  " + bodyPartsCoordinates[bodyPartsCoordinates.Count-1].Y.ToString());
                 reloadBonus = !reloadBonus;
             }
 
