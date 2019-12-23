@@ -33,6 +33,7 @@ namespace snake_wpf
 
         int score = 0;
         Label scoreLabel = new Label();
+       
 
         bool flagEatBonus = false; //true when the snake eats a bonus. if true the program will increase the snake length
 
@@ -48,7 +49,7 @@ namespace snake_wpf
             scoreLabel.Content = score;
             scoreLabel.FontSize = 250;
             scoreLabel.FontFamily = new FontFamily("Courier new");
-            scoreLabel.Foreground = Brushes.LightGray;
+            scoreLabel.Foreground = Brushes.DarkGray;
             
            
 
@@ -65,7 +66,6 @@ namespace snake_wpf
 
             
         }
-
 
         void PrintSnake()
         {
@@ -92,7 +92,7 @@ namespace snake_wpf
             Rectangle r = new Rectangle();
             r.Height = 10;
             r.Width = 10;
-            r.Fill = Brushes.Blue;
+            r.Fill = Brushes.Green;
 
             bodyPartsCoordinates.Add(coordinates);
             bodyParts.Add(r);
@@ -104,7 +104,6 @@ namespace snake_wpf
             bodyParts.RemoveAt(0);
             bodyPartsCoordinates.RemoveAt(0);
         }
-
 
         void timer_Tick(object sender, EventArgs e) //Main Loop
         {
@@ -131,6 +130,7 @@ namespace snake_wpf
 
             if (CheckSnakeTouchingHimself())
             {
+                timer.Stop();
                 MessageBox.Show("YOU LOSE");
                 NavigationService.Navigate(new StartMenu());
             }
@@ -263,6 +263,11 @@ namespace snake_wpf
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             Application.Current.MainWindow.KeyDown += new KeyEventHandler(Window_KeyDown);
+        }
+
+        private void PrintScoreToFile()
+        {
+
         }
     }
 }
