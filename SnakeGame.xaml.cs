@@ -145,6 +145,8 @@ namespace snake_wpf
                 timer.Stop();
                 secondsTimer.Stop();
                 //scrivo su file il punteggio
+               // TimeSpan time = TimeSpan.FromSeconds(seconds);
+               // FileManagement.SaveGameData(new GameData(score, DateTime.Now.ToString(), time.ToString(@"hh\:mm\:ss")));
                 MessageBox.Show("YOU LOSE");
                 NavigationService.Navigate(new StartMenu());
             }
