@@ -37,9 +37,10 @@ namespace snake_wpf
             Main.Content = new SnakeGame();
         }
 
-        private void mw_KeyDown(object sender, KeyEventArgs e)
+
+        private void MenuItem_Click_AboutSnake(object sender, RoutedEventArgs e)
         {
-   //         MessageBox.Show("MW WORKING");
+            MessageBox.Show("Developed by Nicolas Guarini");
         }
     }
 }

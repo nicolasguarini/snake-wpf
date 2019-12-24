@@ -12,7 +12,7 @@
         <TextBlock Text="Snake by Nicolas Guarini"  FontSize="32" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0, -150, 0, 0" FontFamily="Courier New"/>
         <StackPanel Margin="0, 0, 0, 0" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Width="75" Height="40" Foreground="White" Background="DimGray" Content="New Game" Click="BtnClickNewGame" FontFamily="Courier New"/>
-            <Button Width="75" Height="40" Foreground="White" Background="DimGray" Content="Scores" Margin="30, 0, 0, 0" FontFamily="Courier New"/>
+            <Button Width="75" Height="40" Foreground="White" Background="DimGray" Content="Scores" Click="BtnClickScores" Margin="30, 0, 0, 0" FontFamily="Courier New"/>
         </StackPanel>
     </Grid>
 </Page>

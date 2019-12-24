@@ -1,0 +1,20 @@
+﻿<Page x:Class="snake_wpf.Scores"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:snake_wpf"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Scores">
+
+    <Grid Background="Black">
+        <Button Height="40" Width="150"  Content="Back to Start Menu" Click="BtnClickBackToStartMenu" FontFamily="Courier new" Foreground="White" Background="DimGray" Margin="25,10,625,400"/>
+        <Label Content="Scores" Foreground="White" FontFamily="Courier new" FontSize="50" Margin="305,19,305,363"/>
+
+        <Label Content="Score" Foreground="White" FontFamily="Courier new" Width="50" Panel.ZIndex="2" Margin="120,111,589,319"/>
+        <Label Content="Date" Foreground="White" FontFamily="Courier new" Width="50" Panel.ZIndex="2" Margin="235,111,421,319"/>
+        <Label Content="Duration" Foreground="White" FontFamily="Courier new" Panel.ZIndex="2" Margin="495,111,234,319"/>
+        <ListBox Name="ScoresList" Margin="161,136,181,66" Background="Black" Foreground="White"/>
+    </Grid>
+</Page>

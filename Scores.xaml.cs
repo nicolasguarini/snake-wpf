@@ -16,23 +16,23 @@ using System.Windows.Shapes;
 namespace snake_wpf
 {
     /// <summary>
-    /// Logica di interazione per StartMenu.xaml
+    /// Logica di interazione per Scores.xaml
     /// </summary>
-    public partial class StartMenu : Page
+    public partial class Scores : Page
     {
-        public StartMenu()
+        public Scores()
         {
             InitializeComponent();
+            List<GameData> gameDatas = FileManagement.ReadGameData();
+            foreach(GameData i in gameDatas)
+            {
+                ScoresList.Items.Add(i.Score + "\t\t\t" + i.Date + "\t\t" + i.Time);
+            }
         }
 
-        private void BtnClickNewGame(object sender, RoutedEventArgs e)
+        private void BtnClickBackToStartMenu(object sender, EventArgs e)
         {
-            NavigationService.Navigate(new SnakeGame());
-        }
-
-        private void BtnClickScores(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Scores());
+            NavigationService.Navigate(new StartMenu());
         }
     }
 }

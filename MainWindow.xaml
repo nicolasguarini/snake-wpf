@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:snake_wpf"
         mc:Ignorable="d"
-        Title="Snake by Nicolas Guarini"  Height="550" Width="860" ResizeMode="NoResize" KeyDown="mw_KeyDown" Name="mw" Background="Black">
+        Title="Snake by Nicolas Guarini"  Height="550" Width="860" ResizeMode="NoResize" Name="mw" Background="Black">
 
 
 
@@ -16,7 +16,7 @@
                 <MenuItem Header="Restart game" Foreground="White" Background="Black" IsCheckable="False" Click="MenuItem_Click_RestartGame"/>
             </MenuItem>
             <MenuItem Header="Help" BorderThickness="0, 0, 1, 0" Background="Black" Foreground="White" BorderBrush="White" FontFamily="Courier New">
-                <MenuItem Header="About Snake" IsCheckable="False" Click="MenuItem_Click_StartMenu" Background="Black" Foreground="White"/>
+                <MenuItem Header="About Snake" IsCheckable="False" Click="MenuItem_Click_AboutSnake" Background="Black" Foreground="White"/>
             </MenuItem>
         </Menu>
 
