@@ -147,9 +147,25 @@ namespace snake_wpf
                 //scrivo su file il punteggio
                TimeSpan time = TimeSpan.FromSeconds(seconds);
                FileManagement.SaveGameData(new GameData(score, DateTime.Now.ToString(), time.ToString(@"hh\:mm\:ss")));
-                MessageBox.Show("YOU LOSE");
+                YouLose();
                 NavigationService.Navigate(new StartMenu());
             }
+        }
+
+        void YouLose()
+        {
+            List<GameData> gameDatas = FileManagement.ReadGameData();
+            int max = 0;
+            foreach(GameData i in gameDatas)
+            {
+                if (i.Score > max)
+                    max = i.Score;
+            }
+
+            if (score > max)
+                MessageBox.Show("NEW RECORD!! SCORE: {0}", score.ToString());
+            else
+                MessageBox.Show("YOU LOSE!! SCORE: {0}", score.ToString());
         }
 
         bool CheckSnakeEatBonus()
