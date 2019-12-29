@@ -34,5 +34,11 @@ namespace snake_wpf
         {
             NavigationService.Navigate(new StartMenu());
         }
+
+        private void BtnClickResetScores(object sender, EventArgs e)
+        {
+            FileManagement.ResetFile();
+            NavigationService.Navigate(new Scores());
+        }
     }
 }

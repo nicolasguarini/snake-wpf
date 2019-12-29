@@ -55,6 +55,11 @@ namespace snake_wpf
             return gameDatas;
         }
 
+        public static void ResetFile()
+        {
+            File.WriteAllText(path + fileName, String.Empty);
+        }
+
         static string[] GetFields(string record)
         {
             string[] fields = new string[lengths.Length];

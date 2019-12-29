@@ -11,7 +11,7 @@
     <Grid Background="Black">
         <Button Height="40" Width="150"  Content="Back to Start Menu" Click="BtnClickBackToStartMenu" FontFamily="Courier new" Foreground="White" Background="DimGray" Margin="25,10,625,400"/>
         <Label Content="Scores" Foreground="White" FontFamily="Courier new" FontSize="50" Margin="305,19,305,363"/>
-
+        <Button Height="40" Width="150" Content="Reset scores" Click="BtnClickResetScores" FontFamily="Courier new" Foreground="White" Background="DimGray" Margin="623,10,27,400" />
         <Label Content="Score" Foreground="White" FontFamily="Courier new" Width="50" Panel.ZIndex="2" Margin="120,111,589,319"/>
         <Label Content="Date" Foreground="White" FontFamily="Courier new" Width="50" Panel.ZIndex="2" Margin="235,111,421,319"/>
         <Label Content="Duration" Foreground="White" FontFamily="Courier new" Panel.ZIndex="2" Margin="495,111,234,319"/>
