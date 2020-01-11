@@ -19,7 +19,7 @@ namespace snake_wpf
 {
     public partial class SnakeGame : Page
     {
-        
+
         DispatcherTimer timer = new DispatcherTimer();
         DispatcherTimer secondsTimer = new DispatcherTimer();
         int seconds = 0;
@@ -36,14 +36,14 @@ namespace snake_wpf
 
         int score = 0;
         Label scoreLabel = new Label();
-       
+
 
         bool flagEatBonus = false; //true when the snake eats a bonus. if true the program will increase the snake length
 
         public SnakeGame()
         {
             timer.Tick += timer_Tick;
-            timer.Interval = TimeSpan.FromMilliseconds(50);
+            timer.Interval = TimeSpan.FromMilliseconds(25);
 
             secondsTimer.Tick += SecondsCounter;
             secondsTimer.Interval = TimeSpan.FromMilliseconds(1000);
@@ -57,10 +57,10 @@ namespace snake_wpf
             scoreLabel.FontSize = 250;
             scoreLabel.FontFamily = new FontFamily("Courier new");
             scoreLabel.Foreground = Brushes.DarkGray;
-            
-           
 
-            for (int i = 0; i < 5; i++) 
+
+
+            for (int i = 0; i < 5; i++)
             {
                 AddBodyPart(currentPosition);
 
@@ -71,7 +71,7 @@ namespace snake_wpf
                 currentPosition.X += 10;
             }
 
-            
+
         }
 
         void SecondsCounter(object sender, EventArgs e)
@@ -100,7 +100,7 @@ namespace snake_wpf
 
         public void AddBodyPart(Point coordinates)
         {
-            
+
             Rectangle r = new Rectangle();
             r.Height = 10;
             r.Width = 10;
@@ -119,11 +119,11 @@ namespace snake_wpf
 
         void timer_Tick(object sender, EventArgs e) //Main Loop
         {
-            AddBodyPart(currentPosition); 
-             
+            AddBodyPart(currentPosition);
+
             UpdateCurrentPosition();
 
-            if(flagEatBonus)
+            if (flagEatBonus)
             {
                 AddBodyPart(currentPosition);
                 UpdateCurrentPosition();
@@ -156,7 +156,7 @@ namespace snake_wpf
         {
             List<GameData> gameDatas = FileManagement.ReadGameData();
             int max = 0;
-            foreach(GameData i in gameDatas)
+            foreach (GameData i in gameDatas)
             {
                 if (i.Score > max)
                     max = i.Score;
@@ -171,6 +171,48 @@ namespace snake_wpf
         bool CheckSnakeEatBonus()
         {
             scoreLabel.Content = score;
+
+            int xMax;
+            int xMin;
+            int yMax;
+            int yMin;
+            if (currentPosition.X > bonusCoordinates.X)
+            {
+                xMax = Convert.ToInt32(currentPosition.X);
+                xMin = Convert.ToInt32(bonusCoordinates.X);
+            }
+            else
+            {
+                xMin = Convert.ToInt32(currentPosition.X);
+                xMax = Convert.ToInt32(bonusCoordinates.X);
+            }
+
+            if (currentPosition.Y > bonusCoordinates.Y)
+            {
+                yMax = Convert.ToInt32(currentPosition.Y);
+                yMin = Convert.ToInt32(bonusCoordinates.Y);
+            }
+            else
+            {
+                yMax = Convert.ToInt32(bonusCoordinates.Y);
+                yMin = Convert.ToInt32(currentPosition.Y);
+            }
+
+
+
+            if (xMax - xMin < 10)
+            {
+                if (yMax - yMin < 10)
+                {
+                    score++;
+                    flagEatBonus = true;
+                    return true;
+                }
+            }
+
+            return false;
+
+            /*
             if (currentPosition.Equals(bonusCoordinates))
             {
                 score++;
@@ -179,6 +221,7 @@ namespace snake_wpf
             }
             else
                 return false;
+             * */
         }
 
         bool CheckSnakeTouchingHimself()
@@ -196,23 +239,23 @@ namespace snake_wpf
             {
                 currentPosition.X += 10;
             }
-                
+
             if (currentDirection == "down")
             {
                 currentPosition.Y += 10;
             }
-                
+
             if (currentDirection == "left")
             {
                 currentPosition.X -= 10;
             }
-                
+
             if (currentDirection == "up")
             {
                 currentPosition.Y -= 10;
             }
-                
-            
+
+
             //If the snake reaches the edge of the window it will come back from the other side
             if (currentPosition.X >= canvas.ActualWidth)
             {
@@ -225,27 +268,28 @@ namespace snake_wpf
                 currentPosition.X = canvas.ActualWidth;
                 return;
             }
-                
+
 
             if (currentPosition.Y >= canvas.ActualHeight)
             {
                 currentPosition.Y = 0;
                 return;
             }
-                
+
 
             if (currentPosition.Y <= 0)
             {
                 currentPosition.Y = canvas.ActualHeight;
                 return;
             }
-                
+
         }
 
         void PrintBonus()
         {
             if (!reloadBonus) //se è la prima volta genero la posizione del bonus
             {
+                /*
                 bonusCoordinates.X = new Random().Next(0, Convert.ToInt16(canvas.ActualWidth));
                 while (bonusCoordinates.X % 10 != 0 || bonusCoordinates.Y % 10 != 0 || bonusCoordinates.X < 10|| bonusCoordinates.X > canvas.ActualWidth-10)
                     bonusCoordinates.X = new Random().Next(0, Convert.ToInt16(canvas.ActualWidth));
@@ -253,10 +297,20 @@ namespace snake_wpf
                 
                 while (bonusCoordinates.Y % 10 != 0 || bonusCoordinates.Y < 10 || bonusCoordinates.Y > canvas.ActualHeight - 10)
                     bonusCoordinates.Y = new Random().Next(0, Convert.ToInt16(canvas.ActualHeight));
+                */
 
-                Trace.WriteLine(bonusCoordinates.X.ToString() + "    " + bonusCoordinates.Y.ToString() + "           " + bodyPartsCoordinates[bodyPartsCoordinates.Count-1].X.ToString() + "  " + bodyPartsCoordinates[bodyPartsCoordinates.Count-1].Y.ToString());
+
+                int width = Convert.ToInt32(canvas.ActualWidth / 10);
+                int height = Convert.ToInt32(canvas.ActualHeight / 10);
+
+                bonusCoordinates.X = new Random().Next(0, width) * 10;
+                bonusCoordinates.Y = new Random().Next(0, height) * 10;
+
+                Trace.WriteLine(bonusCoordinates.X.ToString() + "    " + bonusCoordinates.Y.ToString() + "           " + bodyPartsCoordinates[bodyPartsCoordinates.Count - 1].X.ToString() + "  " + bodyPartsCoordinates[bodyPartsCoordinates.Count - 1].Y.ToString());
+
                 reloadBonus = !reloadBonus;
             }
+
 
             bonus.Width = 10;
             bonus.Height = 10;
